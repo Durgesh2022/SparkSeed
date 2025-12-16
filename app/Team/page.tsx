@@ -83,7 +83,10 @@ const SparkSeedTeam = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
             {/* Mayur S */}
             <div 
-              ref={el => leadersRef.current[0] = el}
+              ref={(el) => {
+  leadersRef.current[0] = el;
+}}
+
               className="opacity-0"
               style={{ 
                 transform: 'translateY(50px)',
@@ -123,7 +126,10 @@ const SparkSeedTeam = () => {
 
             {/* P. Raajashekar */}
             <div 
-              ref={el => leadersRef.current[1] = el}
+              ref={(el) => {
+  leadersRef.current[1] = el;
+}}
+
               className="opacity-0"
               style={{ 
                 transform: 'translateY(50px)',
