@@ -352,7 +352,7 @@ cursorTimeoutRef.current = setTimeout(() => {
               className="absolute bottom-10 left-8 md:left-16 right-8 md:right-16 z-[5] opacity-0"
             >
               {/* Slide 0: Investment Thesis */}
-              {index === 0 && slide.content && 'points' in slide.content && (
+              {index === 0 && slide.content && 'points' in slide.content && slide.content.points && (
                 <div className="max-w-3xl">
                   <h3 className="text-xl md:text-2xl font-bold mb-5 text-[#355E3B]">
                     {slide.content.title}
@@ -393,7 +393,7 @@ cursorTimeoutRef.current = setTimeout(() => {
               )}
 
               {/* Slide 2: Cities */}
-              {index === 2 && slide.content && 'cities' in slide.content && (
+              {index === 2 && slide.content && 'cities' in slide.content &&slide.content.cities && (
                 <div className="max-w-4xl">
                   <h3 className="text-xl md:text-2xl font-bold mb-5 text-[#355E3B]">
                     {slide.content.title}
@@ -415,7 +415,7 @@ cursorTimeoutRef.current = setTimeout(() => {
               )}
 
               {/* Slide 3: Stats */}
-              {index === 3 && slide.content && 'stats' in slide.content && (
+              {index === 3 && slide.content && 'stats' in slide.content && slide.content.stats && (
                 <div className="max-w-5xl">
                   <h3 className="text-xl md:text-2xl font-bold mb-6 text-[#355E3B]">
                     {slide.content.title}
