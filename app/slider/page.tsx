@@ -77,7 +77,8 @@ export default function Slideshow() {
   const contentRefs = useRef<(HTMLDivElement | null)[]>([]);
   const counterStripRef = useRef<HTMLDivElement>(null);
   const cursorRef = useRef<HTMLDivElement>(null);
-  const cursorTimeoutRef = useRef<NodeJS.Timeout>();
+  const cursorTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+
 
   // Initialize animations on mount
   useEffect(() => {
