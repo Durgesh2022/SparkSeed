@@ -249,10 +249,14 @@ export default function Slideshow() {
       });
     }
 
-    clearTimeout(cursorTimeoutRef.current);
-    cursorTimeoutRef.current = setTimeout(() => {
-      setCursorVisible(false);
-    }, 2000);
+    if (cursorTimeoutRef.current) {
+  clearTimeout(cursorTimeoutRef.current);
+}
+
+cursorTimeoutRef.current = setTimeout(() => {
+  setCursorVisible(false);
+}, 2000);
+
   };
 
   const handleWheel = (e: React.WheelEvent) => {
