@@ -6,7 +6,6 @@ const CircularLogoAnimation = () => {
   const animationRef = useRef<number | null>(null);
   const logoImages = useRef<{ [key: string]: HTMLImageElement }>({});
 
-
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
@@ -35,7 +34,7 @@ const CircularLogoAnimation = () => {
       evolvex: 'https://api.dicebear.com/7.x/shapes/svg?seed=evolvex&backgroundColor=E63946',
     };
 
-    const loadImage = (src) => {
+const loadImage = (src: string): Promise<HTMLImageElement> => {
       return new Promise((resolve, reject) => {
         if (logoImages.current[src]) {
           resolve(logoImages.current[src]);
