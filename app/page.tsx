@@ -1,6 +1,6 @@
 import Landing from './landing/page';
-import Scroll from './scroll/page';
-import Slideshow from './slider/page'; 
+// import Scroll from './scroll/page';
+// import Slideshow from './slider/page'; 
 import Logos from './logos/page';
 import Team from './Team/page';
 import Demo from './demo/page';
