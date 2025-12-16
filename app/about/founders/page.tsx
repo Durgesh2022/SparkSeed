@@ -38,7 +38,7 @@ const SparkSeedJourney = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-[#f5f5f0] overflow-x-hidden ">
+    <div className="min-h-screen bg-[#f5f5f0] overflow-x-hidden pt-10">
       
       {/* Subtle background pattern */}
       <div className="absolute inset-0 opacity-[0.03]" style={{

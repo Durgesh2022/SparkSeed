@@ -32,7 +32,7 @@ const IndiaFundShowcase = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-[#f5f5f0] text-[#3a3a38] overflow-hidden">
+    <div className="min-h-screen bg-[#f5f5f0] text-[#3a3a38] overflow-hidden pt-10">
       {/* Hero Section */}
       <div className="container mx-auto px-4 py-20">
         <div className="max-w-7xl mx-auto">
