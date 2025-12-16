@@ -7,8 +7,23 @@ export default function VideoTextComponent() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const textRef = useRef<HTMLHeadingElement>(null);
   const [isVideoLoaded, setIsVideoLoaded] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
+    // Check if mobile
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+
+    // If mobile, skip video setup
+    if (window.innerWidth < 768) {
+      setIsVideoLoaded(true);
+      return () => window.removeEventListener('resize', checkMobile);
+    }
+
     const video = videoRef.current;
     const canvas = canvasRef.current;
     const textElement = textRef.current;
@@ -18,35 +33,26 @@ export default function VideoTextComponent() {
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
-    // Set canvas size
     canvas.width = 1920;
     canvas.height = 1080;
 
     let animationFrameId: number;
 
     const updateTextBackground = () => {
-      // Draw current video frame to canvas
       if (video.readyState >= video.HAVE_CURRENT_DATA) {
         ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
-
-        // Convert canvas to data URL and set as text background
         const dataURL = canvas.toDataURL();
         textElement.style.backgroundImage = `url(${dataURL})`;
       }
-
-      // Continue updating
       animationFrameId = requestAnimationFrame(updateTextBackground);
     };
 
-    // Start updating when video is ready
     const handleLoadedData = () => {
-      console.log('Video loaded successfully');
       setIsVideoLoaded(true);
       updateTextBackground();
     };
 
     const handleCanPlay = () => {
-      console.log('Video can play');
       video.play().catch((e) => {
         console.error('Play error:', e);
       });
@@ -54,24 +60,20 @@ export default function VideoTextComponent() {
 
     const handleError = (e: Event) => {
       console.error('Video error:', e);
-      console.error('Video error details:', video.error);
     };
 
     video.addEventListener('loadeddata', handleLoadedData);
     video.addEventListener('canplay', handleCanPlay);
     video.addEventListener('error', handleError);
 
-    // Force load and play
     video.load();
     
-    // Attempt to play after a short delay
     const playTimeout = setTimeout(() => {
       video.play().catch((e) => {
-        console.log('Autoplay prevented, waiting for user interaction:', e);
+        console.log('Autoplay prevented:', e);
       });
     }, 100);
 
-    // Add click handler to entire document to start video
     const handleClick = () => {
       if (video.paused) {
         video.play().catch(console.error);
@@ -79,56 +81,60 @@ export default function VideoTextComponent() {
     };
     document.addEventListener('click', handleClick);
 
-    // Cleanup
     return () => {
       video.removeEventListener('loadeddata', handleLoadedData);
       video.removeEventListener('canplay', handleCanPlay);
       video.removeEventListener('error', handleError);
       document.removeEventListener('click', handleClick);
+      window.removeEventListener('resize', checkMobile);
       cancelAnimationFrame(animationFrameId);
       clearTimeout(playTimeout);
     };
   }, []);
 
   return (
-    <div className="relative w-full min-h-screen flex items-center justify-center overflow-hidden" style={{ backgroundColor: '#f5f5f0' }}>      {/* Subtle background pattern */}
+    <div className="relative w-full min-h-screen flex items-center justify-center overflow-hidden" style={{ backgroundColor: '#f5f5f0' }}>
+      {/* Subtle background pattern */}
       <div className="absolute inset-0 opacity-[0.03]" style={{
         backgroundImage: `radial-gradient(circle at 1px 1px, #000 1px, transparent 0)`,
         backgroundSize: '40px 40px'
       }} />
 
-      {/* Hidden video for capturing frames */}
-      <video
-        ref={videoRef}
-        autoPlay
-        loop
-        muted
-        playsInline
-        preload="auto"
-        className="hidden"
-        crossOrigin="anonymous"
-      >
-        <source src="/video.mp4" type="video/mp4" />
-        Your browser does not support the video tag.
-      </video>
+      {/* Desktop: Hidden video for capturing frames */}
+      {!isMobile && (
+        <>
+          <video
+            ref={videoRef}
+            autoPlay
+            loop
+            muted
+            playsInline
+            preload="auto"
+            className="hidden"
+            crossOrigin="anonymous"
+          >
+            <source src="/video.mp4" type="video/mp4" />
+          </video>
+          <canvas ref={canvasRef} className="hidden" />
+        </>
+      )}
 
-      {/* Hidden canvas for capturing video frames */}
-      <canvas ref={canvasRef} className="hidden" />
-
-      {/* Loading indicator */}
-      {!isVideoLoaded && (
+      {/* Loading indicator - Desktop only */}
+      {!isMobile && !isVideoLoaded && (
         <div className="absolute top-8 left-8 flex items-center gap-3 animate-pulse">
-          <div className="w-2 h-2 bg-blue-500 rounded-full animate-bounce" />
-          <span className="text-sm font-medium text-gray-600">Loading video...</span>
+          <div className="w-2 h-2 bg-[#355E3B] rounded-full animate-bounce" />
+          <span className="text-sm font-medium text-gray-600">Loading...</span>
         </div>
       )}
 
-      {/* Content wrapper with fade-in animation */}
-      <div className={`flex flex-col items-center gap-12 py-20 px-4 transition-opacity duration-1000 ${isVideoLoaded ? 'opacity-100' : 'opacity-0'}`}>
-        {/* Text with video inside */}
+      {/* Content wrapper */}
+      <div className={`flex flex-col items-center gap-8 md:gap-12 py-12 md:py-20 px-4 transition-opacity duration-1000 ${isVideoLoaded ? 'opacity-100' : 'opacity-0'}`}>
+        {/* Desktop: Text with video inside */}
         <h1
           ref={textRef}
-          className="relative font-black uppercase text-transparent bg-clip-text bg-center bg-cover text-center"
+          className={`hidden md:block relative font-black uppercase text-transparent bg-clip-text bg-center bg-cover text-center ${
+            isMobile ? 'bg-gradient-to-br from-[#355E3B] to-[#2d4f32]' : ''
+          }`}
           style={{
             WebkitBackgroundClip: 'text',
             backgroundClip: 'text',
@@ -138,33 +144,58 @@ export default function VideoTextComponent() {
             lineHeight: '0.85',
           }}
         >
-          <span className="block text-[240px] tracking-[8px] lg:text-[250px] lg:tracking-[10px] md:text-[140px] md:tracking-[6px] sm:text-[80px] sm:tracking-[4px]">
+          <span className="block text-[140px] tracking-[6px] lg:text-[250px] lg:tracking-[10px]">
             sparkseed
           </span>
-          <span className="block text-[160px] tracking-[6px] lg:text-[180px] lg:tracking-[8px] md:text-[100px] md:tracking-[5px] sm:text-[60px] sm:tracking-[3px]">
+          <span className="block text-[100px] tracking-[5px] lg:text-[180px] lg:tracking-[8px]">
             ventures
           </span>
         </h1>
-        {/* Decorative line */}
-        <div className="w-24 h-1 bg-gradient-to-r from-transparent via-gray-800 to-transparent" />
 
-        {/* Paragraph with better typography */}
-        <div className="max-w-4xl space-y-4">
-          <p className="text-[#355E3B] text-lg md:text-xl lg:text-4xl text-center px-6 leading-relaxed font-bold">
-            We Fund the Fighters. The Builders. The Crazy Ones with Impossible Goals.
-          </p>
-          
-          
+        {/* Mobile: Simplified text with gradient */}
+        <div className="md:hidden text-center space-y-2">
+          <h1 className="font-black uppercase text-[#355E3B] text-6xl tracking-[4px]" style={{
+            fontFamily: 'system-ui, -apple-system, sans-serif',
+            lineHeight: '0.9',
+            textShadow: '0 2px 8px rgba(53, 94, 59, 0.2)'
+          }}>
+            sparkseed
+          </h1>
+          <h2 className="font-black uppercase text-[#355E3B] text-4xl tracking-[3px]" style={{
+            fontFamily: 'system-ui, -apple-system, sans-serif',
+            lineHeight: '0.9',
+            textShadow: '0 2px 8px rgba(53, 94, 59, 0.2)'
+          }}>
+            ventures
+          </h2>
         </div>
 
-        
+        {/* Decorative line */}
+        <div className="w-16 md:w-24 h-0.5 md:h-1 bg-gradient-to-r from-transparent via-[#355E3B] to-transparent" />
+
+        {/* Tagline - Mobile optimized */}
+        <div className="max-w-4xl">
+          <p className="text-[#355E3B] text-base md:text-xl lg:text-4xl text-center px-4 md:px-6 leading-relaxed font-bold">
+            We Fund the Fighters. The Builders. The Crazy Ones with Impossible Goals.
+          </p>
+        </div>
+
+        {/* Mobile CTA Button */}
+        <div className="md:hidden mt-6">
+          <a 
+            href="#contact"
+            className="inline-block bg-[#355E3B] text-white px-8 py-4 text-sm uppercase font-semibold tracking-wider shadow-lg hover:bg-[#2d4f32] transition-all"
+          >
+            Get Started
+          </a>
+        </div>
       </div>
 
-      {/* Click hint with better styling */}
-      {!isVideoLoaded && (
+      {/* Desktop click hint */}
+      {!isMobile && !isVideoLoaded && (
         <div className="absolute bottom-12 text-center">
           <p className="text-sm text-gray-400 animate-pulse">
-            Click anywhere if video doesn't start automatically
+            Click anywhere if video doesn't start
           </p>
           <div className="mt-2 flex justify-center">
             <svg className="w-6 h-6 text-gray-300 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
