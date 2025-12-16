@@ -32,29 +32,20 @@ useEffect(() => {
 
 
   return (
-    <div className="relative">
-      {/* Image Background - Full Width */}
-      <div className="relative h-[600px] lg:h-[700px] -mx-8">
-        <div className="absolute inset-0 bg-gradient-to-br from-[#355E3B] to-[#2a4a2f] overflow-hidden shadow-2xl">
-          <img 
-            src="/11.jpg" 
-            alt="Founders collaborating" 
-            className="w-full h-full object-cover opacity-80"
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/60 to-transparent"></div>
-        </div>
-        
-        {/* Text Content Overlay - Left Side */}
-        <div className="absolute inset-0 flex items-center">
-          <div className="w-full max-w-7xl mx-auto px-8">
-            <div 
-              ref={galleryCaptionRef}
-              className="max-w-2xl opacity-0 text-white"
-              style={{ 
-                transform: 'translateY(30px)',
-                filter: 'blur(5px)'
-              }}
-            >
+    <div className="relative overflow-y-hidden">
+  <div className="relative h-[600px] lg:h-[700px] overflow-hidden">
+    <div className="absolute inset-0 overflow-hidden">
+      <img src="/11.jpg" alt="Founders" className="w-full h-full object-cover opacity-80" />
+      <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/60 to-transparent"></div>
+    </div>
+
+    <div className="absolute inset-0 flex items-center px-4">
+      <div className="max-w-7xl w-full mx-auto">
+        <div
+          ref={galleryCaptionRef}
+          className="max-w-2xl opacity-0 text-white"
+          style={{ transform: 'translateY(30px)', filter: 'blur(5px)' }}
+        >
               <div className="border-l-4 border-white pl-8 mb-12">
                 <p className="text-3xl font-bold mb-8 tracking-tight uppercase">We back founders who can turn:</p>
                 <div className="space-y-6 text-xl leading-relaxed">

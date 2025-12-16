@@ -38,7 +38,8 @@ const SparkSeedJourney = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-[#f5f5f0]">
+    <div className="min-h-screen bg-[#f5f5f0] overflow-x-hidden ">
+      
       {/* Subtle background pattern */}
       <div className="absolute inset-0 opacity-[0.03]" style={{
         backgroundImage: `radial-gradient(circle at 1px 1px, rgb(53, 94, 59) 1px, transparent 0)`,
