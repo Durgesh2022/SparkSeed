@@ -37,7 +37,8 @@ const SpacePortfolio = () => {
   const startScrollX = useRef(0);
   const lastTouchX = useRef(0);
   const lastTouchTime = useRef(0);
-  const animationFrameId = useRef<number>();
+  const animationFrameId = useRef<number | null>(null);
+
 
   // Constants
   const SMOOTH_FACTOR = 0.065;
