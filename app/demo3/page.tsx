@@ -2,33 +2,34 @@
 import React, { useEffect, useRef } from 'react';
 
 const InvestmentThesisSection = () => {
-  const galleryCaptionRef = useRef(null);
+  const galleryCaptionRef = useRef<HTMLDivElement | null>(null);
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.style.transition = 'all 1s ease-out';
-            entry.target.style.opacity = '1';
-            entry.target.style.transform = 'translateY(0)';
-            entry.target.style.filter = 'blur(0)';
-          }
-        });
-      },
-      { threshold: 0.2 }
-    );
+useEffect(() => {
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting && entry.target instanceof HTMLElement) {
+          entry.target.style.transition = 'all 1s ease-out';
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+          entry.target.style.filter = 'blur(0)';
+        }
+      });
+    },
+    { threshold: 0.2 }
+  );
 
+  if (galleryCaptionRef.current) {
+    observer.observe(galleryCaptionRef.current);
+  }
+
+  return () => {
     if (galleryCaptionRef.current) {
-      observer.observe(galleryCaptionRef.current);
+      observer.unobserve(galleryCaptionRef.current);
     }
+  };
+}, []);
 
-    return () => {
-      if (galleryCaptionRef.current) {
-        observer.unobserve(galleryCaptionRef.current);
-      }
-    };
-  }, []);
 
   return (
     <div className="relative">

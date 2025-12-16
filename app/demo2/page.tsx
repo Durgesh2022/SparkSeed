@@ -20,8 +20,17 @@ if (!ctx) return;
     let rotation1 = 0;
     let rotation2 = 0;
 
-    // Logos positions
-    type LogoKey = keyof typeof logoUrls;
+    // Logo URLs
+const logoUrls = {
+  center: 'https://api.dicebear.com/7.x/shapes/svg?seed=wfc&backgroundColor=F7931E',
+  inner: 'https://api.dicebear.com/7.x/shapes/svg?seed=wfcgaf&backgroundColor=FF6B35',
+  invstt: 'https://api.dicebear.com/7.x/shapes/svg?seed=invstt&backgroundColor=FF6B35',
+  avinya: 'https://api.dicebear.com/7.x/shapes/svg?seed=avinya&backgroundColor=5D9C3A',
+  evolvex: 'https://api.dicebear.com/7.x/shapes/svg?seed=evolvex&backgroundColor=E63946',
+};
+
+// ✅ Now derive keys
+type LogoKey = keyof typeof logoUrls;
 
 const outerLogos: {
   name: LogoKey;
@@ -33,15 +42,6 @@ const outerLogos: {
   { name: 'evolvex', color: '#E63946', angle: Math.PI },
 ];
 
-
-    // Logo URLs - Replace these with your actual logo URLs
-    const logoUrls = {
-      center: 'https://api.dicebear.com/7.x/shapes/svg?seed=wfc&backgroundColor=F7931E',
-      inner: 'https://api.dicebear.com/7.x/shapes/svg?seed=wfcgaf&backgroundColor=FF6B35',
-      invstt: 'https://api.dicebear.com/7.x/shapes/svg?seed=invstt&backgroundColor=FF6B35',
-      avinya: 'https://api.dicebear.com/7.x/shapes/svg?seed=avinya&backgroundColor=5D9C3A',
-      evolvex: 'https://api.dicebear.com/7.x/shapes/svg?seed=evolvex&backgroundColor=E63946',
-    };
 
 const loadImage = (src: string): Promise<HTMLImageElement> => {
       return new Promise((resolve, reject) => {
@@ -164,8 +164,8 @@ const loadImage = (src: string): Promise<HTMLImageElement> => {
         const angle = logo.angle + rotation2;
         const x = centerX + Math.cos(angle) * outerRadius;
         const y = centerY + Math.sin(angle) * outerRadius;
-        const imageKey = logo.name.toLowerCase();
-        drawLogo(x, y, logo.name, logo.color, 65, logoUrls[imageKey]);
+        // const imageKey = logo.name.toLowerCase();
+        drawLogo(x, y, logo.name, logo.color, 65, logoUrls[logo.name]);
       });
 
       animationRef.current = requestAnimationFrame(animate);
