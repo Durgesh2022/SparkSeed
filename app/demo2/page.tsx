@@ -50,56 +50,74 @@ const loadImage = (src: string): Promise<HTMLImageElement> => {
       });
     };
 
-    const drawCircle = (x, y, radius, color, dashed = false) => {
-      ctx.beginPath();
-      if (dashed) {
-        ctx.setLineDash([10, 8]);
-      } else {
-        ctx.setLineDash([]);
-      }
-      ctx.arc(x, y, radius, 0, Math.PI * 2);
-      ctx.strokeStyle = color;
-      ctx.lineWidth = 1.5;
-      ctx.globalAlpha = 0.3;
-      ctx.stroke();
-      ctx.globalAlpha = 1;
-    };
+    const drawCircle = (
+  x: number,
+  y: number,
+  radius: number,
+  color: string,
+  dashed: boolean = false
+): void => {
+  ctx.beginPath();
+  if (dashed) {
+    ctx.setLineDash([10, 8]);
+  } else {
+    ctx.setLineDash([]);
+  }
+  ctx.arc(x, y, radius, 0, Math.PI * 2);
+  ctx.strokeStyle = color;
+  ctx.lineWidth = 1.5;
+  ctx.globalAlpha = 0.3;
+  ctx.stroke();
+  ctx.globalAlpha = 1;
+};
 
-    const drawLogo = (x, y, name, color, size = 40, imageSrc = null) => {
-      // Draw circle background with shadow
-      ctx.shadowColor = 'rgba(0, 0, 0, 0.15)';
-      ctx.shadowBlur = 15;
-      ctx.shadowOffsetX = 0;
-      ctx.shadowOffsetY = 5;
-      
-      ctx.beginPath();
-      ctx.arc(x, y, size / 2, 0, Math.PI * 2);
-      ctx.fillStyle = 'white';
-      ctx.fill();
-      
-      ctx.shadowColor = 'transparent';
-      ctx.shadowBlur = 0;
-      ctx.shadowOffsetX = 0;
-      ctx.shadowOffsetY = 0;
-      
-      ctx.strokeStyle = color;
-      ctx.lineWidth = 3;
-      ctx.stroke();
 
-      // Draw image if available, otherwise draw text
-      if (imageSrc && logoImages.current[imageSrc]) {
-        const img = logoImages.current[imageSrc];
-        const imgSize = size * 0.7;
-        ctx.drawImage(img, x - imgSize / 2, y - imgSize / 2, imgSize, imgSize);
-      } else {
-        // Draw text as fallback
-        ctx.fillStyle = color;
-        ctx.font = 'bold 12px Arial';
-        ctx.textAlign = 'center';
-        ctx.textBaseline = 'middle';
-        ctx.fillText(name, x, y);
-      }
-    };
+    const drawLogo = (
+  x: number,
+  y: number,
+  name: string,
+  color: string,
+  size: number = 40,
+  imageSrc: string | null = null
+): void => {
+  ctx.shadowColor = 'rgba(0, 0, 0, 0.15)';
+  ctx.shadowBlur = 15;
+  ctx.shadowOffsetX = 0;
+  ctx.shadowOffsetY = 5;
+
+  ctx.beginPath();
+  ctx.arc(x, y, size / 2, 0, Math.PI * 2);
+  ctx.fillStyle = 'white';
+  ctx.fill();
+
+  ctx.shadowColor = 'transparent';
+  ctx.shadowBlur = 0;
+  ctx.shadowOffsetX = 0;
+  ctx.shadowOffsetY = 0;
+
+  ctx.strokeStyle = color;
+  ctx.lineWidth = 3;
+  ctx.stroke();
+
+  if (imageSrc && logoImages.current[imageSrc]) {
+    const img = logoImages.current[imageSrc];
+    const imgSize = size * 0.7;
+    ctx.drawImage(
+      img,
+      x - imgSize / 2,
+      y - imgSize / 2,
+      imgSize,
+      imgSize
+    );
+  } else {
+    ctx.fillStyle = color;
+    ctx.font = 'bold 12px Arial';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText(name, x, y);
+  }
+};
+
 
     // Load all images first
     Promise.all(Object.values(logoUrls).map(url => loadImage(url))).then(() => {
