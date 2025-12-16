@@ -57,7 +57,7 @@ const Navbar: React.FC<NavbarProps> = ({ scrollProgress = 0, isScrolled = false 
         </div>
 
         <nav className="flex gap-12 ml-12">
-          <a href="#home" className="text-lg no-underline text-[#355E3B] lowercase hover:opacity-70 transition-opacity">home</a>
+          <a href="/" className="text-lg no-underline text-[#355E3B] lowercase hover:opacity-70 transition-opacity">home</a>
           <a href="/about/investors" className="text-lg no-underline text-[#355E3B] lowercase hover:opacity-70 transition-opacity">for investors</a>
           <a href="/about/founders" className="text-lg no-underline text-[#355E3B] lowercase hover:opacity-70 transition-opacity">for founders</a>
         </nav>
@@ -84,7 +84,7 @@ const Navbar: React.FC<NavbarProps> = ({ scrollProgress = 0, isScrolled = false 
       >
         <nav className="flex flex-col p-6 gap-6">
           <a 
-            href="#home" 
+            href="/" 
             className="text-lg text-[#355E3B] lowercase py-2 border-b border-gray-200 hover:bg-gray-50 transition-colors"
             onClick={() => setIsMenuOpen(false)}
           >
