@@ -57,7 +57,16 @@ const slides = [
       footer: 'We give investors access before the world sees the opportunity.'
     }
   },
-  
+  {
+    image: 'https://images.unsplash.com/photo-1557804506-669a67965ba0?w=1920&q=80',
+    text: ['READY TO BUILD', 'THE FUTURE?'],
+    content: {
+      title: 'Join the SparkSeed Journey',
+      subtitle: 'Where Ambitious Founders Meet Capital That Believes.',
+      cta: 'Apply Now',
+      footer: 'Applications open year-round. Next cohort starts soon.'
+    }
+  }
 ];
 
 const NEXT = 1;
@@ -439,7 +448,7 @@ cursorTimeoutRef.current = setTimeout(() => {
               )}
 
               {/* Slide 4: CTA */}
-              {index === 4 && slide.content && 'cta' in slide.content && (
+              {index === 4 && slide.content && 'cta' in slide.content && slide.content.cta &&(
                 <div className="max-w-3xl text-center mx-auto">
                   <h3 className="text-2xl md:text-3xl font-bold mb-3 text-[#355E3B]">
                     {slide.content.title}
