@@ -3,8 +3,8 @@ import React, { useEffect, useRef, useState } from 'react';
 
 const SparkSeedTeam = () => {
   const [scrollProgress, setScrollProgress] = useState(0);
-  const leadersRef = useRef([]);
-  const mentorsRef = useRef(null);
+    const leadersRef = useRef<(HTMLDivElement | null)[]>([]);
+  const mentorsRef = useRef<HTMLDivElement | null>(null);
   const [animated, setAnimated] = useState(false);
 
   useEffect(() => {
