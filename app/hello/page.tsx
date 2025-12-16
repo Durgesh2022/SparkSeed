@@ -8,7 +8,8 @@ export default function Home() {
   const [mouseX, setMouseX] = useState(0);
 
   useEffect(() => {
-    const handleMouseMove = (e) => {
+    const handleMouseMove = (e: MouseEvent) => {
+
       const x = e.clientX;
       const windowWidth = window.innerWidth;
       const midpoint = windowWidth / 2;
@@ -78,14 +79,14 @@ export default function Home() {
                 </text>
               </svg>
 
-              <h1 
-                className="text-5xl font-bold leading-tight mb-6 tracking-tight transition-all duration-300"
-                style={{
-                  color: 'transparent',
-                  WebkitTextStroke: `3px ${cursorColor}`,
-                  textStroke: `1px ${cursorColor}`
-                }}
-              >
+              <h1
+  className="text-5xl font-bold leading-tight mb-6 tracking-tight transition-all duration-300"
+  style={{
+    color: 'transparent',
+    WebkitTextStroke: `3px ${cursorColor}`
+  }}
+>
+
                 We Fund the Fighters -
                 The Builders <br />
                 The Crazy Ones with
