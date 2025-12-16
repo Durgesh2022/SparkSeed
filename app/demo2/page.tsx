@@ -2,9 +2,10 @@
 import React, { useEffect, useRef } from 'react';
 
 const CircularLogoAnimation = () => {
-  const canvasRef = useRef(null);
-  const animationRef = useRef(null);
-  const logoImages = useRef({});
+  const canvasRef = useRef<HTMLCanvasElement | null>(null);
+  const animationRef = useRef<number | null>(null);
+  const logoImages = useRef<{ [key: string]: HTMLImageElement }>({});
+
 
   useEffect(() => {
     const canvas = canvasRef.current;
