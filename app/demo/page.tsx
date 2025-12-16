@@ -71,7 +71,7 @@ const WhatMakesUsDifferent: React.FC = () => {
   return (
     <section 
       ref={sectionRef}
-      className="min-h-screen bg-[#f5f5f0] py-32 px-8 relative overflow-hidden"
+      className="min-h-screen bg-[#f5f5f0] py-16 md:py-32 px-4 md:px-8 relative overflow-hidden"
     >
       {/* Animated background elements */}
       <div className="absolute inset-0 opacity-5 pointer-events-none">
@@ -82,36 +82,36 @@ const WhatMakesUsDifferent: React.FC = () => {
       <div className="max-w-7xl mx-auto relative z-10">
         {/* Main Title */}
         <div 
-          className={`mb-32 text-center transition-all duration-1000 ${
+          className={`mb-16 md:mb-32 text-center transition-all duration-1000 ${
             visibleItems.includes(0) 
               ? 'opacity-100 translate-y-0' 
               : 'opacity-0 translate-y-20'
           }`}
         >
           <div className="relative inline-block">
-            <h2 className="text-6xl md:text-8xl font-bold tracking-tight leading-tight mb-6">
+            <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-bold tracking-tight leading-tight mb-4 md:mb-6">
               <span className="inline-block animate-word-float text-gray-600">WHAT</span>{' '}
               <span className="inline-block animate-word-float-delayed text-gray-600" style={{animationDelay: '0.2s'}}>MAKES</span>{' '}
               <span className="inline-block animate-word-float text-gray-600" style={{animationDelay: '0.4s'}}>US</span>
               <br />
               <span className="text-[#355E3B] relative inline-block animate-word-float-delayed" style={{animationDelay: '0.6s'}}>
                 DIFFERENT
-                <span className="absolute -bottom-2 left-0 w-full h-3 bg-[#355E3B] opacity-20 animate-pulse"></span>
-                <svg className="absolute -top-4 -right-8 w-16 h-16 text-[#355E3B] opacity-30 animate-spin-slow" fill="currentColor" viewBox="0 0 20 20">
+                <span className="absolute -bottom-1 md:-bottom-2 left-0 w-full h-2 md:h-3 bg-[#355E3B] opacity-20 animate-pulse"></span>
+                <svg className="absolute -top-3 -right-6 md:-top-4 md:-right-8 w-12 h-12 md:w-16 md:h-16 text-[#355E3B] opacity-30 animate-spin-slow" fill="currentColor" viewBox="0 0 20 20">
                   <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                 </svg>
               </span>
             </h2>
           </div>
-          <div className="flex items-center justify-center gap-4 mt-10">
-            <div className="h-1 w-32 bg-[#355E3B] animate-expand-center"></div>
-            <p className="text-xl text-gray-600 italic font-semibold animate-fade-in">(Slaps hard like a manifesto)</p>
-            <div className="h-1 w-32 bg-[#355E3B] animate-expand-center"></div>
+          <div className="flex items-center justify-center gap-2 md:gap-4 mt-6 md:mt-10 px-4">
+            <div className="h-0.5 md:h-1 w-16 md:w-32 bg-[#355E3B] animate-expand-center"></div>
+            <p className="text-sm sm:text-base md:text-xl text-gray-600 italic font-semibold animate-fade-in whitespace-nowrap">(Slaps hard like a manifesto)</p>
+            <div className="h-0.5 md:h-1 w-16 md:w-32 bg-[#355E3B] animate-expand-center"></div>
           </div>
         </div>
 
-        {/* Difference Items with Center Timeline */}
-        <div className="relative">
+        {/* Difference Items with Center Timeline - Desktop */}
+        <div className="hidden md:block relative">
           {/* Center vertical line */}
           <div className="absolute left-1/2 top-0 bottom-0 w-1 bg-gradient-to-b from-[#355E3B] via-[#4a7c59] to-[#355E3B] transform -translate-x-1/2 animate-draw-line">
             <div className="absolute top-0 w-full h-32 bg-gradient-to-b from-transparent to-[#355E3B] opacity-50 animate-pulse"></div>
@@ -225,6 +225,80 @@ const WhatMakesUsDifferent: React.FC = () => {
               </div>
             ))}
           </div>
+        </div>
+
+        {/* Mobile Layout */}
+        <div className="md:hidden space-y-12">
+          {differences.map((item, index) => (
+            <div
+              key={index}
+              className={`relative transition-all duration-1000 ${
+                visibleItems.includes(index + 1)
+                  ? 'opacity-100 translate-y-0'
+                  : 'opacity-0 translate-y-10'
+              }`}
+              style={{ transitionDelay: `${index * 100}ms` }}
+            >
+              {/* Number Badge */}
+              <div className="flex items-center gap-4 mb-4">
+                <div className={`relative w-16 h-16 bg-gradient-to-br from-[#355E3B] to-[#2d4a30] rounded-full flex items-center justify-center shadow-lg transition-all duration-700 border-2 border-white ${
+                  visibleItems.includes(index + 1) ? 'scale-100 rotate-0' : 'scale-0 rotate-180'
+                }`}>
+                  <span className="text-white text-xl font-bold">
+                    {item.number}
+                  </span>
+                </div>
+                <div className="flex-1 h-0.5 bg-[#355E3B] opacity-30"></div>
+              </div>
+
+              {/* Card */}
+              <div className="relative bg-white p-6 rounded-2xl shadow-lg border-l-4 border-[#355E3B]">
+                {/* Content */}
+                <div>
+                  <h3 className="text-xl sm:text-2xl font-bold mb-4 leading-tight text-[#3a3a38]">
+                    {item.title}
+                  </h3>
+                  
+                  <p className="text-base sm:text-lg leading-relaxed mb-3 text-gray-700">
+                    {item.description}
+                  </p>
+
+                  {item.list && (
+                    <div className="my-4 bg-[#f5f5f0] p-4 rounded-lg">
+                      <ul className="space-y-2">
+                        {item.list.map((listItem, listIndex) => (
+                          <li 
+                            key={listIndex}
+                            className="text-base text-gray-700 relative pl-8"
+                            style={{ 
+                              animation: visibleItems.includes(index + 1) ? `slideIn 0.5s ease-out ${listIndex * 100}ms forwards` : 'none',
+                              opacity: visibleItems.includes(index + 1) ? 1 : 0
+                            }}
+                          >
+                            <span className="absolute left-0 top-0.5 text-[#355E3B] font-bold text-lg">→</span>
+                            {listItem}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+
+                  {item.footer && (
+                    <div className="mt-4 pt-4 border-t-2 border-[#355E3B]">
+                      <p className="text-base sm:text-lg font-semibold italic text-[#355E3B] leading-relaxed">
+                        {item.footer}
+                      </p>
+                    </div>
+                  )}
+                </div>
+
+                {/* Corner accent */}
+                <div className="absolute top-0 right-0 w-16 h-16 overflow-hidden">
+                  <div className="absolute -top-8 -right-8 w-20 h-20 bg-[#355E3B] rounded-full opacity-5"></div>
+                </div>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
 
