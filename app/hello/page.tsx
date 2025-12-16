@@ -4,23 +4,22 @@ import { useState, useEffect } from 'react';
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
-  const [cursorColor, setCursorColor] = useState('white');
+  const [cursorColor, setCursorColor] = useState('#355E3B');
   const [mouseX, setMouseX] = useState(0);
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
-
       const x = e.clientX;
       const windowWidth = window.innerWidth;
       const midpoint = windowWidth / 2;
       
       setMouseX(x);
       
-      // Left side = yellow, Right side = green
+      // Left side = green, Right side = green (you can change these)
       if (x < midpoint) {
-        setCursorColor('#355E3B'); // yellow-400
+        setCursorColor('#355E3B'); // green
       } else {
-        setCursorColor('#355E3B'); // green-400
+        setCursorColor('#355E3B'); // green
       }
     };
 
@@ -31,7 +30,6 @@ export default function Home() {
   return (
     <div 
       className="relative w-full h-full overflow-hidden transition-all duration-300"
-     
     >
       {/* Loading State */}
       {isLoading && (
@@ -41,11 +39,12 @@ export default function Home() {
       )}
       
       {/* Spline 3D Background */}
-      <div className="absolute top-20 left-0 w-full h-full z-0"
-       style={{
-       
-        boxShadow: `0 0 20px ${cursorColor}40`
-      }}>
+      <div 
+        className="absolute top-20 left-0 w-full h-full z-0"
+        style={{
+          boxShadow: `0 0 20px ${cursorColor}40`
+        }}
+      >
         <Spline
           scene="https://prod.spline.design/y8AJZ8HVIYMq8epE/scene.splinecode"
           onLoad={() => setIsLoading(false)}
@@ -80,13 +79,12 @@ export default function Home() {
               </svg>
 
               <h1
-  className="text-5xl font-bold leading-tight mb-6 tracking-tight transition-all duration-300"
-  style={{
-    color: 'transparent',
-    WebkitTextStroke: `3px ${cursorColor}`
-  }}
->
-
+                className="text-5xl font-bold leading-tight mb-6 tracking-tight transition-all duration-300"
+                style={{
+                  color: 'transparent',
+                  WebkitTextStroke: `3px ${cursorColor}`
+                }}
+              >
                 We Fund the Fighters -
                 The Builders <br />
                 The Crazy Ones with
@@ -95,11 +93,6 @@ export default function Home() {
             </div>
           </div>
         </div>
-      </div>
-
-      {/* Cursor Position Indicator (Optional - can remove) */}
-      <div className="absolute bottom-4 right-4 z-20 text-white text-sm opacity-50">
-        {mouseX < window.innerWidth / 2 ? 'Left Side' : 'Right Side'}
       </div>
     </div>
   );
