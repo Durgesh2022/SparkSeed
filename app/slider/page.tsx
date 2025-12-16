@@ -301,13 +301,19 @@ cursorTimeoutRef.current = setTimeout(() => {
         {slides.map((slide, index) => (
           <div
             key={index}
-            ref={el => slideRefs.current[index] = el}
+            ref={(el) => {
+  slideRefs.current[index] = el;
+}}
+
             className={`absolute inset-0 overflow-hidden ${index === 0 ? 'visible' : 'invisible'}`}
             style={{ transformOrigin: 'center' }}
           >
             {/* Background Image */}
             <div
-              ref={el => imageRefs.current[index] = el}
+              ref={(el) => {
+  slideRefs.current[index] = el;
+}}
+
               className="absolute -top-[10%] -left-[10%] w-[120%] h-[120%] bg-cover bg-center"
               style={{ 
                 backgroundImage: `url(${slide.image})`,
@@ -320,7 +326,10 @@ cursorTimeoutRef.current = setTimeout(() => {
 
             {/* Main Title */}
             <div 
-              ref={el => textRefs.current[index] = el}
+              ref={(el) => {
+  slideRefs.current[index] = el;
+}}
+
               className="absolute top-16 left-8 md:left-16 max-w-[80%] overflow-hidden z-[5]"
             >
               {slide.text.map((line, i) => (
@@ -336,7 +345,10 @@ cursorTimeoutRef.current = setTimeout(() => {
 
             {/* Content Section */}
             <div
-              ref={el => contentRefs.current[index] = el}
+              ref={(el) => {
+  slideRefs.current[index] = el;
+}}
+
               className="absolute bottom-10 left-8 md:left-16 right-8 md:right-16 z-[5] opacity-0"
             >
               {/* Slide 0: Investment Thesis */}
