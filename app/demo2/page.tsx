@@ -21,11 +21,18 @@ if (!ctx) return;
     let rotation2 = 0;
 
     // Logos positions
-    const outerLogos = [
-      { name: 'invstt', color: '#FF6B35', angle: 0 },
-      { name: 'avinya', color: '#5D9C3A', angle: Math.PI / 2 },
-      { name: 'evolvex', color: '#E63946', angle: Math.PI },
-    ];
+    type LogoKey = keyof typeof logoUrls;
+
+const outerLogos: {
+  name: LogoKey;
+  color: string;
+  angle: number;
+}[] = [
+  { name: 'invstt', color: '#FF6B35', angle: 0 },
+  { name: 'avinya', color: '#5D9C3A', angle: Math.PI / 2 },
+  { name: 'evolvex', color: '#E63946', angle: Math.PI },
+];
+
 
     // Logo URLs - Replace these with your actual logo URLs
     const logoUrls = {
