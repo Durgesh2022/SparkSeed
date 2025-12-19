@@ -1,7 +1,7 @@
 'use client'
 import React, { useEffect, useRef } from 'react';
 import Hello from '../demo2/page';
-import Demo from './demo/page';
+import Demo from './demo2/page';
 
 const SparkSeedVC: React.FC = () => {
   const galleryCaptionRef = useRef<HTMLDivElement>(null);
