@@ -8,7 +8,8 @@ export default function ImageTextComponent() {
   const [isLoaded, setIsLoaded] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const scrollPositionRef = useRef(0);
-  const animationFrameRef = useRef<number>();
+  const animationFrameRef = useRef<number | null>(null);
+
 
   // Sample images - replace with your actual image URLs
   const images = [
