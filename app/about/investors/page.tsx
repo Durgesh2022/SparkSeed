@@ -32,27 +32,33 @@ const IndiaFundShowcase = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-[#f5f5f0] text-[#3a3a38] overflow-hidden pt-10">
+    <div className="min-h-screen bg-[#f5f5f0] text-[#3a3a38] overflow-hidden pt-10 sm:pt-10">
+      {/* Subtle background pattern */}
+      <div className="absolute inset-0 opacity-[0.03]" style={{
+        backgroundImage: `radial-gradient(circle at 1px 1px, rgb(53, 94, 59) 1px, transparent 0)`,
+        backgroundSize: '40px 40px'
+      }}></div>
+
       {/* Hero Section */}
-      <div className="container mx-auto px-4 py-20">
+      <div className="relative container mx-auto px-4 sm:px-6 py-12 sm:py-16 md:py-20">
         <div className="max-w-7xl mx-auto">
           {/* Header */}
-          <div className="text-center mb-20 animate-fade-in">
-            <div className="inline-block mb-6 px-6 py-2 bg-[#355E3B] bg-opacity-10 rounded-full border border-[#355E3B]">
-              <span className="text-sm font-semibold text-white tracking-wider uppercase">For Investors</span>
+          <div className="text-center mb-12 sm:mb-16 md:mb-20 animate-fade-in">
+            <div className="inline-block mb-4 sm:mb-6 px-4 sm:px-6 py-2 bg-[#355E3B] bg-opacity-10 rounded-full border border-[#355E3B]">
+              <span className="text-xs sm:text-sm font-semibold text-white tracking-wider uppercase">For Investors</span>
             </div>
-            <h1 className="text-6xl md:text-8xl font-black mb-8 tracking-tight">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black mb-6 sm:mb-8 tracking-tight px-2">
               <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#355E3B] via-[#4a7c59] to-[#355E3B]">
                 WHY WE ARE
               </span>
             </h1>
-            <h2 className="text-4xl md:text-6xl font-black leading-tight">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-black leading-tight px-2">
               <span className="text-[#3a3a38]">THE MOST </span>
               <span className="relative inline-block">
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#355E3B] to-[#4a7c59]">
                   UNDERESTIMATED
                 </span>
-                <div className="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-[#355E3B] to-[#4a7c59] rounded-full"></div>
+                <div className="absolute -bottom-1 sm:-bottom-2 left-0 right-0 h-0.5 sm:h-1 bg-gradient-to-r from-[#355E3B] to-[#4a7c59] rounded-full"></div>
               </span>
               <br />
               <span className="text-[#3a3a38]">FUND IN INDIA</span>
@@ -60,17 +66,17 @@ const IndiaFundShowcase = () => {
           </div>
 
           {/* Main Content Grid */}
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <div className="grid lg:grid-cols-2 gap-8 sm:gap-10 md:gap-12 items-center">
             {/* Left Column - Text Content */}
-            <div className="space-y-8">
+            <div className="space-y-6 sm:space-y-8">
               {/* Vision Statement */}
-              <div className="bg-white rounded-2xl p-8 border border-gray-200 shadow-lg hover:border-[#355E3B] hover:shadow-xl transition-all duration-300 transform hover:scale-[1.02]">
-                <p className="text-xl md:text-2xl leading-relaxed text-[#3a3a38]">
+              <div className="bg-white rounded-xl sm:rounded-2xl p-6 sm:p-8 border border-gray-200 shadow-lg hover:border-[#355E3B] hover:shadow-xl transition-all duration-300 transform hover:scale-[1.02]">
+                <p className="text-lg sm:text-xl md:text-2xl leading-relaxed text-[#3a3a38]">
                   Because the next India will <span className="font-bold text-[#355E3B]">NOT</span> be built only in Koramangala, Bandra & Cyber City.
                 </p>
               </div>
 
-              {/* Cities List */}
+                            {/* Cities List */}
               <div className="bg-gradient-to-br from-opacity-10 to-[#4a7c59] to-opacity-10 rounded-2xl p-8 border border-[#355E3B] shadow-lg">
                 <h3 className="text-2xl font-bold mb-6 text-[#355E3B]">It will be built in:</h3>
                 <div className="grid grid-cols-2 gap-4">
@@ -87,16 +93,17 @@ const IndiaFundShowcase = () => {
                 </div>
               </div>
 
+
               {/* Unique Position */}
-              <div className="bg-gradient-to-r from-[#355E3B] to-[#4a7c59] rounded-2xl p-8 border border-[#355E3B] shadow-lg">
-                <p className="text-xl font-semibold leading-relaxed text-white">
+              <div className="bg-gradient-to-r from-[#355E3B] to-[#4a7c59] rounded-xl sm:rounded-2xl p-6 sm:p-8 border border-[#355E3B] shadow-lg">
+                <p className="text-base sm:text-lg md:text-xl font-semibold leading-relaxed text-white">
                   And we are the <span className="font-bold underline">ONLY</span> fund going to these creators before they become visible.
                 </p>
               </div>
             </div>
 
             {/* Right Column - Map */}
-            <div ref={sectionRef} className="relative">
+            <div ref={sectionRef} className="relative order-first lg:order-last">
               <div className="relative max-w-4xl mx-auto">
                 {/* India Map Image */}
                 <div className="relative">
@@ -120,17 +127,17 @@ const IndiaFundShowcase = () => {
                       }}
                     >
                       <div className="relative group cursor-pointer">
-                        <div className="absolute inset-0 bg-[#355E3B] rounded-full blur-xl opacity-50 group-hover:opacity-100 transition-opacity animate-pulse"></div>
+                        <div className="absolute inset-0 bg-[#355E3B] rounded-full blur-lg sm:blur-xl opacity-50 group-hover:opacity-100 transition-opacity animate-pulse"></div>
                         <svg
-                          width="32"
-                          height="32"
+                          width="24"
+                          height="24"
                           viewBox="0 0 24 24"
                           fill="currentColor"
-                          className="relative text-[#355E3B] drop-shadow-lg transform group-hover:scale-125 transition-transform"
+                          className="relative text-[#355E3B] drop-shadow-lg transform group-hover:scale-125 transition-transform sm:w-8 sm:h-8"
                         >
                           <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
                         </svg>
-                        <div className="absolute top-full mt-2 left-1/2 transform -translate-x-1/2 bg-gray-900 px-3 py-1 rounded-lg text-sm whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none text-white">
+                        <div className="absolute top-full mt-2 left-1/2 transform -translate-x-1/2 bg-gray-900 px-2 sm:px-3 py-1 rounded-lg text-xs sm:text-sm whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none text-white">
                           {city.name}
                         </div>
                       </div>
@@ -142,19 +149,19 @@ const IndiaFundShowcase = () => {
           </div>
 
           {/* Investment Proposition */}
-          <div className="mt-32 space-y-12">
-            <div className="text-center max-w-4xl mx-auto">
-              <h3 className="text-4xl md:text-5xl font-black mb-6 text-[#3a3a38] leading-tight">
+          <div className="mt-20 sm:mt-24 md:mt-32 space-y-8 sm:space-y-10 md:space-y-12">
+            <div className="text-center max-w-4xl mx-auto px-4">
+              <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black mb-4 sm:mb-6 text-[#3a3a38] leading-tight">
                 You invest not only in startups
               </h3>
-              <div className="h-px w-32 bg-gradient-to-r from-transparent via-[#355E3B] to-transparent mx-auto mb-6"></div>
-              <p className="text-3xl md:text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-[#355E3B] via-[#4a7c59] to-[#355E3B]">
+              <div className="h-px w-20 sm:w-32 bg-gradient-to-r from-transparent via-[#355E3B] to-transparent mx-auto mb-4 sm:mb-6"></div>
+              <p className="text-2xl sm:text-3xl md:text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-[#355E3B] via-[#4a7c59] to-[#355E3B]">
                 You invest in a pipeline of opportunity
               </p>
             </div>
 
             {/* Stats Grid */}
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8 max-w-6xl mx-auto">
               {[
                 { value: '500', label: 'High-potential early-stage companies', color: 'from-[#355E3B] to-[#4a7c59]', icon: '📊' },
                 { value: '10,000+', label: 'Screened founders', color: 'from-[#4a7c59] to-[#355E3B]', icon: '👥' },
@@ -165,16 +172,16 @@ const IndiaFundShowcase = () => {
               ].map((stat, idx) => (
                 <div
                   key={idx}
-                  className="group relative bg-white rounded-2xl p-8 border border-gray-200 shadow-lg hover:border-[#355E3B] hover:shadow-2xl transition-all duration-500 transform hover:scale-105 overflow-hidden"
+                  className="group relative bg-white rounded-xl sm:rounded-2xl p-6 sm:p-8 border border-gray-200 shadow-lg hover:border-[#355E3B] hover:shadow-2xl transition-all duration-500 transform hover:scale-105 overflow-hidden"
                   style={{ animationDelay: `${idx * 0.1}s` }}
                 >
                   <div className="absolute inset-0 bg-gradient-to-br from-[#355E3B] from-opacity-10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                   <div className="relative">
-                    <div className="text-4xl mb-4 transform group-hover:scale-110 transition-transform duration-300">{stat.icon}</div>
-                    <div className={`text-4xl md:text-5xl font-black mb-3 bg-clip-text text-transparent bg-gradient-to-r ${stat.color}`}>
+                    <div className="text-3xl sm:text-4xl mb-3 sm:mb-4 transform group-hover:scale-110 transition-transform duration-300">{stat.icon}</div>
+                    <div className={`text-3xl sm:text-4xl md:text-5xl font-black mb-2 sm:mb-3 bg-clip-text text-transparent bg-gradient-to-r ${stat.color}`}>
                       {stat.value}
                     </div>
-                    <div className="text-base text-[#3a3a38] leading-snug font-medium">{stat.label}</div>
+                    <div className="text-sm sm:text-base text-[#3a3a38] leading-snug font-medium">{stat.label}</div>
                   </div>
                 </div>
               ))}
@@ -182,18 +189,18 @@ const IndiaFundShowcase = () => {
           </div>
 
           {/* Closing Statement */}
-          <div className="mt-24 text-center">
-            <div className="relative bg-gradient-to-br from-[#3a3a38] via-[#2d2d2b] to-[#3a3a38] rounded-3xl p-12 md:p-16 border border-[#3a3a38] shadow-2xl transform hover:scale-[1.02] transition-all duration-500 overflow-hidden">
+          <div className="mt-16 sm:mt-20 md:mt-24 text-center">
+            <div className="relative bg-gradient-to-br from-[#355E3B] via-[#4a7c59] to-[#355E3B] rounded-2xl sm:rounded-3xl p-8 sm:p-10 md:p-12 lg:p-16 border border-[#355E3B] shadow-2xl transform hover:scale-[1.02] transition-all duration-500 overflow-hidden">
               <div className="absolute inset-0 bg-gradient-to-r from-[#355E3B]/10 via-[#4a7c59]/10 to-[#355E3B]/10 opacity-50"></div>
-              <div className="absolute top-0 right-0 w-96 h-96 bg-[#355E3B]/20 rounded-full blur-3xl"></div>
-              <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#4a7c59]/20 rounded-full blur-3xl"></div>
+              <div className="absolute top-0 right-0 w-48 h-48 sm:w-64 sm:h-64 md:w-96 md:h-96 bg-white/10 rounded-full blur-3xl"></div>
+              <div className="absolute bottom-0 left-0 w-48 h-48 sm:w-64 sm:h-64 md:w-96 md:h-96 bg-white/10 rounded-full blur-3xl"></div>
               
-              <div className="relative z-10">
-                <p className="text-2xl md:text-4xl font-black leading-relaxed text-white mb-8">
-                  We give investors access <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#355E3B] to-[#4a7c59]">before</span> the world sees the opportunity.
+              <div className="relative z-10 px-2">
+                <p className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-black leading-relaxed text-white mb-6 sm:mb-8">
+                  We give investors access <span className="text-green-100">before</span> the world sees the opportunity.
                 </p>
-                <div className="h-1 w-24 bg-gradient-to-r from-[#355E3B] to-[#4a7c59] rounded-full mx-auto mb-8"></div>
-                <p className="text-3xl md:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-[#355E3B] via-[#4a7c59] to-[#355E3B]">
+                <div className="h-0.5 sm:h-1 w-16 sm:w-24 bg-white/30 rounded-full mx-auto mb-6 sm:mb-8"></div>
+                <p className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-white">
                   That's where 10x, 20x, 30x returns are born.
                 </p>
               </div>
@@ -202,7 +209,7 @@ const IndiaFundShowcase = () => {
         </div>
       </div>
 
-      <style jsx>{`
+      <style dangerouslySetInnerHTML={{__html: `
         @keyframes fade-in {
           from {
             opacity: 0;
@@ -238,7 +245,7 @@ const IndiaFundShowcase = () => {
         .animate-bounce-in {
           animation: bounce-in 1s ease-out forwards;
         }
-      `}</style>
+      `}} />
     </div>
   );
 };
