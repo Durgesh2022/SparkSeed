@@ -1,10 +1,20 @@
 'use client';
 import { useEffect, useRef, useState } from 'react';
 
+type FloatingElement = {
+  width: number;
+  height: number;
+  left: number;
+  top: number;
+  opacity: number;
+  duration: number;
+  delay: number;
+};
+
 export default function InvestmentThesis() {
   const [isVisible, setIsVisible] = useState(false);
   const [activeIndex, setActiveIndex] = useState(0);
-  const [floatingElements, setFloatingElements] = useState([]);
+  const [floatingElements, setFloatingElements] = useState<FloatingElement[]>([]);
   const sectionRef = useRef(null);
 
   useEffect(() => {
