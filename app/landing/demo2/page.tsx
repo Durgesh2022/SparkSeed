@@ -177,7 +177,7 @@ export default function ImageTextComponent() {
           style={{
             WebkitBackgroundClip: 'text',
             backgroundClip: 'text',
-            WebkitTextStroke: '8px #1e3a23ff',
+            WebkitTextStroke: '12px #1e3a23ff',
             filter: 'drop-shadow(0 4px 20px rgba(0,0,0,0.15))',
             fontFamily: 'system-ui, -apple-system, sans-serif',
             lineHeight: '0.85',
