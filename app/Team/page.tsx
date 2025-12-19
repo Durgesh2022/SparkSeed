@@ -3,7 +3,7 @@ import React, { useEffect, useRef, useState } from 'react';
 
 const SparkSeedTeam = () => {
   const [scrollProgress, setScrollProgress] = useState(0);
-    const leadersRef = useRef<(HTMLDivElement | null)[]>([]);
+  const leadersRef = useRef<(HTMLDivElement | null)[]>([]);
   const mentorsRef = useRef<HTMLDivElement | null>(null);
   const [animated, setAnimated] = useState(false);
 
@@ -52,41 +52,43 @@ const SparkSeedTeam = () => {
 
   return (
     <div className="min-h-screen bg-[#f5f5f0] text-[#3a3a38]">
-      <style jsx>{`
+      {/* Subtle background pattern */}
+      <div className="fixed inset-0 opacity-[0.03] pointer-events-none" style={{
+        backgroundImage: `radial-gradient(circle at 1px 1px, rgb(53, 94, 59) 1px, transparent 0)`,
+        backgroundSize: '40px 40px'
+      }}></div>
+
+      <style dangerouslySetInnerHTML={{__html: `
         ::-webkit-scrollbar { width: 8px; }
         ::-webkit-scrollbar-track { background: transparent; }
         ::-webkit-scrollbar-thumb { background-color: #355E3B; border-radius: 4px; }
-      `}</style>
-
-      {/* Header */}
-      
+      `}} />
 
       {/* Hero Section */}
-      <section className="pt-40 pb-20 px-8">
+      <section className="relative pt-20 sm:pt-28 md:pt-32 lg:pt-40 pb-12 sm:pb-16 md:pb-20 px-4 sm:px-6 md:px-8">
         <div className="max-w-7xl mx-auto">
-          <div className="mb-16">
-            <h1 className="text-7xl font-bold mb-6 tracking-tight leading-tight">
+          <div className="mb-12 sm:mb-16">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-4 sm:mb-6 tracking-tight leading-tight text-[#355E3B]">
               TEAM
             </h1>
-            <p className="text-3xl font-semibold text-[#355E3B] mb-8 leading-snug">
+            <p className="text-xl sm:text-2xl md:text-3xl font-semibold text-[#3a3a38] mb-6 sm:mb-8 leading-snug">
               Leadership That's Built Companies —<br/>
               Not Just Portfolios
             </p>
-            <div className="w-32 h-1 bg-[#355E3B]"></div>
+            <div className="w-20 sm:w-24 md:w-32 h-0.5 sm:h-1 bg-[#355E3B]"></div>
           </div>
         </div>
       </section>
 
       {/* Leadership Section */}
-      <section className="py-20 px-8">
+      <section className="relative py-12 sm:py-16 md:py-20 px-4 sm:px-6 md:px-8">
         <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-12 md:gap-16">
             {/* Mayur S */}
             <div 
               ref={(el) => {
-  leadersRef.current[0] = el;
-}}
-
+                leadersRef.current[0] = el;
+              }}
               className="opacity-0"
               style={{ 
                 transform: 'translateY(50px)',
@@ -95,10 +97,10 @@ const SparkSeedTeam = () => {
             >
               <div className="mb-8">
                 {/* Image placeholder */}
-                <div className="w-full h-[600px] bg-white border-4 border-[#355E3B] flex items-center justify-center mb-6 relative overflow-hidden">
+                <div className="w-full h-[400px] sm:h-[500px] md:h-[600px] bg-white border-2 sm:border-4 border-[#355E3B] flex items-center justify-center mb-4 sm:mb-6 relative overflow-hidden rounded-lg">
                   <div className="text-center">
-                    <div className="text-6xl font-bold text-[#355E3B] mb-2">MS</div>
-                    <div className="text-sm text-[#3a3a38]/50 uppercase tracking-wider">Image Placeholder</div>
+                    <div className="text-4xl sm:text-5xl md:text-6xl font-bold text-[#355E3B] mb-2">MS</div>
+                    <div className="text-xs sm:text-sm text-[#3a3a38]/50 uppercase tracking-wider">Image Placeholder</div>
                   </div>
                   <div 
                     className="absolute inset-0 opacity-5"
@@ -109,10 +111,10 @@ const SparkSeedTeam = () => {
                   />
                 </div>
                 
-                <h2 className="text-4xl font-bold mb-2 tracking-tight">Mayur S</h2>
-                <p className="text-xl text-[#355E3B] font-semibold mb-6">Co-Founder & CEO</p>
+                <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-2 tracking-tight">Mayur S</h2>
+                <p className="text-lg sm:text-xl text-[#355E3B] font-semibold mb-4 sm:mb-6">Co-Founder & CEO</p>
                 
-                <div className="space-y-4 text-lg leading-relaxed">
+                <div className="space-y-3 sm:space-y-4 text-base sm:text-lg leading-relaxed">
                   <p>
                     <span className="font-bold">Builder, operator, storyteller, ecosystem architect.</span>
                   </p>
@@ -127,9 +129,8 @@ const SparkSeedTeam = () => {
             {/* P. Raajashekar */}
             <div 
               ref={(el) => {
-  leadersRef.current[1] = el;
-}}
-
+                leadersRef.current[1] = el;
+              }}
               className="opacity-0"
               style={{ 
                 transform: 'translateY(50px)',
@@ -138,10 +139,10 @@ const SparkSeedTeam = () => {
             >
               <div className="mb-8">
                 {/* Image placeholder */}
-                <div className="w-full h-[600px] bg-white border-4 border-[#355E3B] flex items-center justify-center mb-6 relative overflow-hidden">
+                <div className="w-full h-[400px] sm:h-[500px] md:h-[600px] bg-white border-2 sm:border-4 border-[#355E3B] flex items-center justify-center mb-4 sm:mb-6 relative overflow-hidden rounded-lg">
                   <div className="text-center">
-                    <div className="text-6xl font-bold text-[#355E3B] mb-2">PR</div>
-                    <div className="text-sm text-[#3a3a38]/50 uppercase tracking-wider">Image Placeholder</div>
+                    <div className="text-4xl sm:text-5xl md:text-6xl font-bold text-[#355E3B] mb-2">PR</div>
+                    <div className="text-xs sm:text-sm text-[#3a3a38]/50 uppercase tracking-wider">Image Placeholder</div>
                   </div>
                   <div 
                     className="absolute inset-0 opacity-5"
@@ -152,10 +153,10 @@ const SparkSeedTeam = () => {
                   />
                 </div>
                 
-                <h2 className="text-4xl font-bold mb-2 tracking-tight">P. Raajashekar</h2>
-                <p className="text-xl text-[#355E3B] font-semibold mb-6">Managing Partner</p>
+                <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-2 tracking-tight">P. Raajashekar</h2>
+                <p className="text-lg sm:text-xl text-[#355E3B] font-semibold mb-4 sm:mb-6">Managing Partner</p>
                 
-                <div className="space-y-4 text-lg leading-relaxed">
+                <div className="space-y-3 sm:space-y-4 text-base sm:text-lg leading-relaxed">
                   <p>
                     <span className="font-bold">EV, mobility & industry veteran.</span>
                   </p>
@@ -171,7 +172,7 @@ const SparkSeedTeam = () => {
       </section>
 
       {/* Mentors Section */}
-      <section className="py-32 px-8 bg-[#355E3B] text-white relative overflow-hidden">
+      <section className="relative py-16 sm:py-20 md:py-24 lg:py-32 px-4 sm:px-6 md:px-8 bg-[#355E3B] text-white overflow-hidden">
         <div 
           className="absolute inset-0 opacity-10"
           style={{
@@ -187,20 +188,20 @@ const SparkSeedTeam = () => {
             filter: 'blur(5px)'
           }}
         >
-          <h2 className="text-6xl font-bold mb-12 tracking-tight">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-8 sm:mb-10 md:mb-12 tracking-tight leading-tight">
             50+ Mentors Who Are Not Speakers.<br/>
             <span className="text-[#f5f5f0]">They Are Soldiers.</span>
           </h2>
           
-          <div className="w-32 h-1 bg-white mx-auto mb-12"></div>
+          <div className="w-20 sm:w-24 md:w-32 h-0.5 sm:h-1 bg-white mx-auto mb-8 sm:mb-10 md:mb-12"></div>
           
-          <p className="text-2xl leading-relaxed mb-8">
+          <p className="text-lg sm:text-xl md:text-2xl leading-relaxed mb-6 sm:mb-8">
             CEOs, CTOs, founders, operators —<br/>
-            <span className="font-bold text-3xl">not LinkedIn influencers.</span>
+            <span className="font-bold text-xl sm:text-2xl md:text-3xl">not LinkedIn influencers.</span>
           </p>
           
-          <div className="mt-16 pt-12 border-t border-white/30">
-            <p className="text-xl leading-loose opacity-90">
+          <div className="mt-12 sm:mt-14 md:mt-16 pt-8 sm:pt-10 md:pt-12 border-t border-white/30">
+            <p className="text-base sm:text-lg md:text-xl leading-loose opacity-90 px-2">
               Our mentors have been in the trenches. They've launched products at 2 AM, 
               pivoted when everything was falling apart, and scaled companies from 
               <span className="font-bold"> zero to hero.</span>
@@ -210,21 +211,21 @@ const SparkSeedTeam = () => {
       </section>
 
       {/* Call to Action */}
-      <section className="py-32 px-8">
+      <section className="relative py-16 sm:py-20 md:py-24 lg:py-32 px-4 sm:px-6 md:px-8">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-5xl font-bold mb-8 tracking-tight">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 sm:mb-8 tracking-tight leading-tight">
             Ready to Build Alongside<br/>
             <span className="text-[#355E3B]">Real Operators?</span>
           </h2>
           
-          <p className="text-xl mb-12 leading-relaxed">
+          <p className="text-base sm:text-lg md:text-xl mb-8 sm:mb-10 md:mb-12 leading-relaxed px-2">
             We don't invest from ivory towers.<br/>
             We build in the dirt with you.
           </p>
           
           <a 
             href="mailto:hello@sparkseed.vc" 
-            className="inline-block bg-[#355E3B] text-white px-12 py-5 text-lg font-semibold no-underline transition-all hover:bg-[#2d4f32] hover:scale-105"
+            className="inline-block bg-[#355E3B] text-white px-8 sm:px-10 md:px-12 py-4 sm:py-5 text-base sm:text-lg font-semibold no-underline transition-all hover:bg-[#2d4f32] hover:scale-105 rounded-lg shadow-lg"
           >
             LET'S TALK
           </a>
