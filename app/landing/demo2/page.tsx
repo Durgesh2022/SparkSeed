@@ -13,11 +13,11 @@ export default function ImageTextComponent() {
 
   // Sample images - replace with your actual image URLs
   const images = [
-    'https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=800&h=600&fit=crop',
-    'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&h=600&fit=crop',
-    'https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=800&h=600&fit=crop',
-    'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=800&h=600&fit=crop',
-    'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=600&fit=crop',
+    '/8.png',
+    '/8.png',
+    '/8.png',
+    '/8.png',
+    '/8.png',
   ];
 
   useEffect(() => {
