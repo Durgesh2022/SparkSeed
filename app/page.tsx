@@ -1,10 +1,10 @@
-import Landing from './landing/page';
+import Landing from './components/Landing';
 // import Scroll from './scroll/page';
 // import Slideshow from './slider/page'; 
-import Logos from './logos/page';
-import Team from './Team/page';
-import Demo from './demo/page';
-import Demo2 from './demo3/page';
+import Logos from './components/logos';
+import Team from './components/team';
+import Demo from './components/WhatAreWe';
+import Demo2 from './components/different';
 
 export default function Home() {
   return (
