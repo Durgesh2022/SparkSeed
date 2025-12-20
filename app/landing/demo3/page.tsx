@@ -92,7 +92,7 @@ const InnovatorsLanding = () => {
           {/* Main Heading with Gradient and Glitch Effect */}
           <div className="relative inline-block">
             <h1 
-              className="text-5xl md:text-6xl font-black mb-8 animate-fadeInUp tracking-tight"
+              className="text-3xl md:text-6xl font-black mb-8 animate-fadeInUp tracking-tight"
               style={{
                 background: 'linear-gradient(135deg, #355E3B 0%, #4a7c59 50%, #6b9d7a 100%)',
                 WebkitBackgroundClip: 'text',
@@ -106,7 +106,7 @@ const InnovatorsLanding = () => {
             </h1>
             {/* Glitch layers */}
             <h1 
-              className="absolute top-0 left-0 text-5xl md:text-6xl font-black opacity-70 animate-glitch-1 tracking-tight"
+              className="absolute top-0 left-0 text-3xl md:text-6xl font-black opacity-70 animate-glitch-1 tracking-tight"
               style={{
                 background: 'linear-gradient(135deg, #355E3B 0%, #4a7c59 50%, #6b9d7a 100%)',
                 WebkitBackgroundClip: 'text',
